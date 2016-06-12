@@ -26,6 +26,13 @@ public class Sorter {
         return array;
     }
 
+    private static void print(int[] array) {
+        for (int i : array) {
+            System.out.print(i + ", ");
+        }
+        System.out.println();
+    }
+
     private static void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];
@@ -36,7 +43,50 @@ public class Sorter {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (array[j] < array[i]) {
-                    swap(array, array[j], i);
+                    swap(array, j, i);
+                }
+            }
+        }
+        return array;
+    }
+
+    public static int[] insertionSort(int[] array) {
+        //For each element starting from the second one
+        //(the first is considered ordered)
+        for (int i = 1; i < array.length; i++) {
+            //Grab the element to make a 'hole'
+            int element = array[i];
+            int j = i;
+            //While we´re on the loop (j > 0) and the element is less than the element on its left
+            while (j > 0 && element < array[j - 1]) {
+                //Switch elements to the right
+                array[j] = array[j - 1];
+                j--;
+            }
+            //Insert the element into the 'hole'
+            array[j] = element;
+        }
+        return array;
+    }
+
+    public static int[] insertionSort2(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int tmp = array[i];
+            int j;
+            for (j = i; j > 0 && tmp < array[j - 1]; j--)
+                array[j] = array[j - 1];
+            array[j] = tmp;
+        }
+        return array;
+    }
+
+    public static int[] insertionSort3(int[] array) {
+        for (int i = 1; i < array.length - 1; i++) {
+            for (int j = i + 1; j > 0; j--) {
+                if (array[j] < array[j - 1]) {
+                    swap(array, j, j - 1);
+                } else {
+                    break;
                 }
             }
         }
