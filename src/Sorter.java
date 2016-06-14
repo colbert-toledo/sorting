@@ -59,7 +59,7 @@ public class Sorter {
             int j = i;
             //While we´re on the loop (j > 0) and the element is less than the element on its left
             while (j > 0 && element < array[j - 1]) {
-                //Switch elements to the right
+                //move sorted elements to the right
                 array[j] = array[j - 1];
                 j--;
             }
@@ -90,6 +90,64 @@ public class Sorter {
                 }
             }
         }
+        return array;
+    }
+
+    public static int[] bubbleSort(int[] array) {
+        boolean swapped = true;
+        int i = 0;
+        while (swapped) {
+            swapped = false;
+            i++;
+            //The last i elements are already sorted
+            //Bubble largest elements to the end
+            for (int j = 0; j < array.length - i; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                    swapped = true;
+                }
+            }
+        }
+        return array;
+    }
+
+    public static int[] bubbleSort2(int[] array) {
+        boolean swapped = false;
+        for (int element : array) {
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                    swapped = true;
+                }
+            }
+
+            //If there weren´t any swaps,
+            if (!swapped) {
+                // break early, its already sorted
+                break;
+            }
+        }
+        return array;
+    }
+
+    public static int[] bubbleSort3(int[] array) {
+        int size = array.length;
+        int newSize;
+
+        do {
+            newSize = 0;
+
+            for (int i = 0; i < size - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
+                    newSize = i;
+                }
+            }
+
+            size = newSize;
+
+        } while (size > 0);
+
         return array;
     }
 }

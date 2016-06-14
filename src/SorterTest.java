@@ -1,6 +1,7 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertArrayEquals;
 
 public class SorterTest {
     int[] unsorted;
@@ -14,14 +15,21 @@ public class SorterTest {
 
     @Test
     public void selectionSort() {
-        Assert.assertArrayEquals(sorted, Sorter.selectionSort(unsorted));
-        Assert.assertArrayEquals(sorted, Sorter.selectionSort2(unsorted));
+        assertArrayEquals(sorted, Sorter.selectionSort(unsorted));
+        assertArrayEquals(sorted, Sorter.selectionSort2(unsorted));
     }
 
     @Test
     public void insertionSort() {
-        Assert.assertArrayEquals(sorted, Sorter.insertionSort(unsorted));
-        Assert.assertArrayEquals(sorted, Sorter.insertionSort2(unsorted));
-        Assert.assertArrayEquals(sorted, Sorter.insertionSort3(unsorted));
+        assertArrayEquals(sorted, Sorter.insertionSort(unsorted));
+        assertArrayEquals(sorted, Sorter.insertionSort2(unsorted));
+        assertArrayEquals(sorted, Sorter.insertionSort3(unsorted));
+    }
+
+    @Test
+    public void bubbleSort() {
+        assertArrayEquals(sorted, Sorter.bubbleSort(unsorted));
+        assertArrayEquals(sorted, Sorter.bubbleSort2(unsorted));
+        assertArrayEquals(sorted, Sorter.bubbleSort3(unsorted));
     }
 }
